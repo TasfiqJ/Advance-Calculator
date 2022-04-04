@@ -31,21 +31,21 @@ def calculator(idx, lst, op):
         leftval = (lst.pop(idxleft))#same thing for the left value 
         if op == '**':#if theres an exponent sign in the list
             answer = (float(leftval)) ** (float(rightval))#take the value to the left of the exponent to the power of the value to the right of the exponent
-        if op == '//':#if there is a floor division sign in the list
+        elif op == '//':#if there is a floor division sign in the list
             '''turns left and right value into floats so that they can get rounded, I did this to avoid an error. Would get an error if the left or right value was not a float'''
             leftval = float(leftval)
             rightval = float(rightval)
             rightval = round(rightval)
             leftval = round(leftval)
             answer = (leftval) // (rightval)#does operation
-        if op == '/':#same concept as before
+        elif op == '/':#same concept as before
             answer = (float(leftval)) / (float(rightval)) 
-        if op == '*':#same concept as before
+        elif op == '*':#same concept as before
             answer = (float(leftval)) * (float(rightval))
         
-        if op == '+':#same concept as before
+        elif op == '+':#same concept as before
             answer = (float(leftval)) + (float(rightval))
-        if op == '-':#same concept as before
+        elif op == '-':#same concept as before
             answer = (float(leftval)) - (float(rightval))
             
         lst[idxleft] = (str(answer))#turns the value to the left of the operator into the answer of the operation
@@ -71,23 +71,23 @@ def bedmas(lst):
         lst = calculator(idxxpo, lst, '**')#does the calculation and puts the answer in the correct spot
         
     
-    if '//' in lst:#same concept as before
+    elif '//' in lst:#same concept as before
         idxfloor = idxfinder(lst, '//')
         lst = calculator(idxfloor, lst, '//')
         
-    if '/' in lst:#same concept as before
+    elif '/' in lst:#same concept as before
         idxdiv = idxfinder(lst, '/') 
         lst = calculator(idxdiv, lst, '/')
         
-    if '*' in lst:#same concept as before
+    elif '*' in lst:#same concept as before
         idxmult = idxfinder(lst, '*')           
         lst = calculator(idxmult, lst, '*')
         
-    if '+' in lst:#same concept as before
+    elif '+' in lst:#same concept as before
         idxplus = idxfinder(lst, '+')
         lst = calculator(idxplus, lst, '+')
         
-    if '-' in lst:#same concept as before
+    elif '-' in lst:#same concept as before
         idxminus = idxfinder(lst, '-')
         lst = calculator(idxminus, lst, '-')      
                 
